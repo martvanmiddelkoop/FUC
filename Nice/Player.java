@@ -8,9 +8,16 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Player extends Dynamic
 {
+    private int speed = 2; //movement speed  
+    private int vSpeed = 0; //vertical speed  
+    private int acceleration = 2; //gravity effect while falling  
+    private int jumpStrength = -8; 
+    
     public void act()
     {
-        checkKeyPress(); //This should be included in the act() method so that the game is always checking for user input.
+        checkKeyPress();
+        checkFall();
+        jump();//This should be included in the act() method so that the game is always checking for user input.
         //Methods such as shooting a gun go here.
     }
     
@@ -30,6 +37,11 @@ public class Player extends Dynamic
         {
             move(3);
         }
+        
+        if (Greenfoot.isKeyDown("space") && onPlatform())
+        {
+            jump();
+        }
     }
     
     /**
@@ -43,5 +55,38 @@ public class Player extends Dynamic
         int y = getY();
         
         setLocation(x, y);
+    }
+    
+    public void jump()  
+    {  
+        if (Greenfoot.isKeyDown("space"))  
+        {  
+            vSpeed = jumpStrength;  
+            fall();  
+        }  
+    } 
+    
+    public void fall()  
+    {  
+        setLocation(getX(), getY()+vSpeed);  
+        vSpeed = vSpeed + acceleration;  
+    }  
+
+    public boolean onPlatform()  
+    {  
+        Actor under = getOneObjectAtOffset (0, getImage().getHeight()/2, World.class);  
+        return under != null;  
+    }  
+
+    public void checkFall()  
+    {  
+        if (onPlatform())  
+        {  
+            vSpeed = 0;  
+        }  
+        else  
+        {  
+            fall();  
+        }  
     }
 }
