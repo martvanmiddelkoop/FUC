@@ -8,7 +8,6 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Player extends Dynamic
 {
-    private int speed = 2; //movement speed  
     private int vSpeed = 0; //vertical speed  
     private int acceleration = 2; //gravity effect while falling  
     private int jumpStrength = -8; 
@@ -27,11 +26,11 @@ public class Player extends Dynamic
         Dynamic dyn = (Dynamic) world.getDynamic();
         if(Greenfoot.isKeyDown("left") && dyn.shouldScroll == false)
         {
-            move(-3);
+            move(-3 * 2);
         }
         else if(Greenfoot.isKeyDown("right") && dyn.shouldScroll == false)
         {
-            move(3);
+            move(3 * 2);
         }
         
         if (Greenfoot.isKeyDown("space") && onPlatform())
