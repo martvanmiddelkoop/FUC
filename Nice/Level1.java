@@ -24,7 +24,6 @@ public class Level1 extends Level
                 
                 case 30:
                 case 31:
-                case 32:
                 case 33:
                 case 16:
                 case 15:
