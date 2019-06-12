@@ -17,14 +17,10 @@ public class Player extends Dynamic
     {
         checkKeyPress();
         checkFall();
-        jump();//This should be included in the act() method so that the game is always checking for user input.
-        //Methods such as shooting a gun go here.
+        jump();
+        handleCollision();
     }
     
-    /**
-     * This is used for responding to keyboard input by the user.
-     * This will only happen when the player is far enough to the left or right of the screen for scrolling to be needed.
-     */
     public void checkKeyPress()
     {
         Level world = (Level) getWorld();
@@ -44,11 +40,11 @@ public class Player extends Dynamic
         }
     }
     
-    /**
-     * This method will make the player move right a certain amount.
-     * Entering a negative amount will cause a movement towards the left.
-     * @param The speed of the movement
-     */
+    public void handleCollision()
+    {
+ 
+    }
+    
     public void move(int amount)
     {
         int x = getX() + amount;
@@ -74,8 +70,13 @@ public class Player extends Dynamic
 
     public boolean onPlatform()  
     {  
-        Actor under = getOneObjectAtOffset (0, getImage().getHeight()/2, World.class);  
-        return under != null;  
+       Actor block = getOneIntersectingObject(Block.class);
+        if(block != null)
+        {
+            setLocation(getX(), block.getY() - block.getImage().getHeight() / 2 - getImage().getHeight() / 2); 
+            return true;
+        }
+        return false;
     }  
 
     public void checkFall()  
