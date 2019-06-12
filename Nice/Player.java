@@ -11,14 +11,16 @@ public class Player extends Dynamic
     private int speed = 2; //movement speed  
     private int vSpeed = 0; //vertical speed  
     private int acceleration = 2; //gravity effect while falling  
-    private int jumpStrength = -8; 
+    private int jumpStrength = -30; 
+    private boolean hasJumped = false;
     
     public void act()
     {
+                checkFall();
+
         checkKeyPress();
-        checkFall();
-        jump();
-        handleCollision();
+        
+        
     }
     
     public void checkKeyPress()
@@ -34,16 +36,16 @@ public class Player extends Dynamic
             move(3);
         }
         
-        if (Greenfoot.isKeyDown("space") && onPlatform())
+        if (Greenfoot.isKeyDown("space") && !hasJumped)
         {
+            hasJumped = true;
             jump();
+            fall();
+            
         }
+       
     }
-    
-    public void handleCollision()
-    {
- 
-    }
+  
     
     public void move(int amount)
     {
@@ -55,11 +57,8 @@ public class Player extends Dynamic
     
     public void jump()  
     {  
-        if (Greenfoot.isKeyDown("space"))  
-        {  
-            vSpeed = jumpStrength;  
-            fall();  
-        }  
+            
+            vSpeed = jumpStrength;   
     } 
     
     public void fall()  
@@ -73,6 +72,7 @@ public class Player extends Dynamic
        Actor block = getOneIntersectingObject(Block.class);
         if(block != null)
         {
+            hasJumped = false;
             setLocation(getX(), block.getY() - block.getImage().getHeight() / 2 - getImage().getHeight() / 2 + 1); 
             return true;
         }
