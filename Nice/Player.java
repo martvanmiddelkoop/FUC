@@ -73,7 +73,7 @@ public class Player extends Dynamic
        Actor block = getOneIntersectingObject(Block.class);
         if(block != null)
         {
-            setLocation(getX(), block.getY() - block.getImage().getHeight() / 2 - getImage().getHeight() / 2); 
+            setLocation(getX(), block.getY() - block.getImage().getHeight() / 2 - getImage().getHeight() / 2 + 1); 
             return true;
         }
         return false;
