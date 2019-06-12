@@ -1,5 +1,5 @@
 #Greenfoot project file
-class.Block.image=baby2.png
+class.Block.image=brick.jpg
 class.Player.image=turtle.png
 dependency1.from=Level
 dependency1.to=Player
