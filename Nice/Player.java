@@ -8,16 +8,19 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Player extends Dynamic
 {
+    private int speed = 2; //movement speed  
+    private int vSpeed = 0; //vertical speed  
+    private int acceleration = 2; //gravity effect while falling  
+    private int jumpStrength = -8; 
+    
     public void act()
     {
-        checkKeyPress(); //This should be included in the act() method so that the game is always checking for user input.
-        //Methods such as shooting a gun go here.
+        checkKeyPress();
+        checkFall();
+        jump();
+        handleCollision();
     }
     
-    /**
-     * This is used for responding to keyboard input by the user.
-     * This will only happen when the player is far enough to the left or right of the screen for scrolling to be needed.
-     */
     public void checkKeyPress()
     {
         Level world = (Level) getWorld();
@@ -30,18 +33,61 @@ public class Player extends Dynamic
         {
             move(3);
         }
+        
+        if (Greenfoot.isKeyDown("space") && onPlatform())
+        {
+            jump();
+        }
     }
     
-    /**
-     * This method will make the player move right a certain amount.
-     * Entering a negative amount will cause a movement towards the left.
-     * @param The speed of the movement
-     */
+    public void handleCollision()
+    {
+ 
+    }
+    
     public void move(int amount)
     {
         int x = getX() + amount;
         int y = getY();
         
         setLocation(x, y);
+    }
+    
+    public void jump()  
+    {  
+        if (Greenfoot.isKeyDown("space"))  
+        {  
+            vSpeed = jumpStrength;  
+            fall();  
+        }  
+    } 
+    
+    public void fall()  
+    {  
+        setLocation(getX(), getY()+vSpeed);  
+        vSpeed = vSpeed + acceleration;  
+    }  
+
+    public boolean onPlatform()  
+    {  
+       Actor block = getOneIntersectingObject(Block.class);
+        if(block != null)
+        {
+            setLocation(getX(), block.getY() - block.getImage().getHeight() / 2 - getImage().getHeight() / 2 + 1); 
+            return true;
+        }
+        return false;
+    }  
+
+    public void checkFall()  
+    {  
+        if (onPlatform())  
+        {  
+            vSpeed = 0;  
+        }  
+        else  
+        {  
+            fall();  
+        }  
     }
 }
