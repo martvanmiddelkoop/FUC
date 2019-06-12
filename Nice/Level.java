@@ -15,7 +15,7 @@ public class Level extends World
     {    
         super(600, 400, 1, false);
         player = new Player();
-        addObject(player, 300, 354); //Creates the player.
+        addObject(player, 300, 100); //Creates the player.
         dyn = new Dynamic();
         addObject(dyn, 0, -10);
     }
