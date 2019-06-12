@@ -6,15 +6,28 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Enemy extends WorldObject
+public abstract class Enemy extends WorldObject
 {
     
-    public void touchPlayer(Player player)
+    public abstract void touchPlayer(Player player);
+    public abstract void walk();
+    public final void act() 
     {
-    }
+        transform();
+        walk();
+        Player player = (Player)getOneIntersectingObject(Player.class);
+        if(player != null)
+        {
+            touchPlayer(player);
+        }
+
+    }   
     
-    public void act() 
+    public void move(int amount)
     {
-        // Add your action code here.
-    }    
+        int x = getX() + amount;
+        int y = getY();
+        
+        setLocation(x, y);
+    }
 }

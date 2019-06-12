@@ -1,4 +1,4 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
  * Superclass of all actors.
@@ -24,18 +24,22 @@ public class Dynamic extends Actor
     {
         Level world = (Level) getWorld();
         Player player = (Player) world.getPlayer();
-        playerX = player.getX();
-        if(playerX <= minX || playerX >= maxX)
+        
+        if(player != null)
         {
-            shouldScroll = true;
-        }
-        else
-        {
-            shouldScroll = false;
-        }
-        if(shouldScroll == true && (playerX >= 400 && Greenfoot.isKeyDown("left")) || (playerX <= 200 && Greenfoot.isKeyDown("right")))
-        {
-            shouldScroll = false;
+            playerX = player.getX();
+            if(playerX <= minX || playerX >= maxX)
+            {
+                shouldScroll = true;
+            }
+            else
+            {
+                shouldScroll = false;
+            }
+            if(shouldScroll == true && (playerX >= 400 && Greenfoot.isKeyDown("left")) || (playerX <= 200 && Greenfoot.isKeyDown("right")))
+            {
+                shouldScroll = false;
+            }
         }
     }
 }
