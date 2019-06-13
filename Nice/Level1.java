@@ -16,7 +16,7 @@ public class Level1 extends Level
     
     protected Level getNext()
     {
-        return null;
+        return new Level2();
     }
     /**
      * Constructor for objects of class Level1.
