@@ -8,11 +8,12 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Level3 extends Level
 {
-
-    /**
-     * Constructor for objects of class Level3.
-     * 
-     */
+    
+    protected Level clone()
+    {
+        return new Level3();
+    }
+    
     public Level3()
     {
         for(int i = 0; i < 50; i++)
