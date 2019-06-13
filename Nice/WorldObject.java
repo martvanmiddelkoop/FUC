@@ -51,7 +51,7 @@ public class WorldObject extends Dynamic
      */
     public void transform()
     {
-        checkKeyPress(3);
+        checkKeyPress(3 * 2);
         setLocation();
     }
 }
