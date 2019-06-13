@@ -27,6 +27,12 @@ public class Level1 extends Level
                 case 33:
                 case 16:
                 case 15:
+                case 20:
+                case 21:
+                case 22:
+                case 23:
+                case 24:
+                case 25:
                     break;
                 case 14:
                 case 13:
@@ -36,6 +42,15 @@ public class Level1 extends Level
                 default:
                     addObject(block, i * block.getImage().getWidth(), getHeight());
                     break;
+            }
+            
+            
+            switch(i)
+            {
+                case 22:
+                case 21:
+                    addObject(new Block(), i * block.getImage().getWidth(), getHeight() - block.getImage().getHeight() * 2);
+
             }
             
             
