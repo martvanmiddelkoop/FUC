@@ -6,7 +6,7 @@ import java.util.*;
  * @author Bertie Wheen
  * @version 0.1
  */
-public class Level extends World
+public abstract class Level extends World
 {
     private Player player;
     private Dynamic dyn;
@@ -20,6 +20,8 @@ public class Level extends World
         dyn = new Dynamic();
         addObject(dyn, 0, -10);
     }
+    
+    protected abstract Level clone();
     
     public Actor findActor(Actor find)
 {
@@ -40,5 +42,10 @@ public class Level extends World
     public Dynamic getDynamic()
     {
         return dyn;
+    }
+    
+    public void lose()
+    {
+        Greenfoot.setWorld(clone());
     }
 }

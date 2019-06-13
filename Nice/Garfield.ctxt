@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=Garfield
+comment1.params=player
+comment1.target=void\ touchPlayer(Player)
+comment2.params=
+comment2.target=void\ walk()
+comment3.params=
+comment3.target=void\ checkKeys()
+comment4.params=
+comment4.target=void\ shoot()
+numComments=5
