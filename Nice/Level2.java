@@ -19,13 +19,27 @@ public class Level2 extends Level
         return new Level3();
     }
     
+    private boolean keyCollected = false;
+    
+    public void setKeyCollected()
+    {
+      keyCollected = true;  
+    }
+    
+    public boolean isKeyCollected()
+    {
+        return keyCollected;
+    }
+    
     /**
      * Constructor for objects of class Level2.
      * 
      */
     public Level2()
     {
-        for(int i = 0; i < 65; i++)
+        Finish f = new Finish();
+        addObject(f, new SteenBlock().getImage().getWidth() * 64, getHeight() - new SteenBlock().getImage().getHeight());
+        for(int i = -20; i < 65; i++)
         {
             SteenBlock block = new SteenBlock();
 
@@ -122,8 +136,12 @@ public class Level2 extends Level
                   case 57:
                             addObject(block, i * block.getImage().getWidth(), getHeight() - block.getImage().getHeight() * 2);
                   break;
+                  case -19:
+                    Sleutel s = new Sleutel();
+                    addObject(s, i * block.getImage().getWidth(),  getHeight() - block.getImage().getHeight());
                   case 58:
                   case 59:
+                 
                             
                 default:
                     addObject(block, i * block.getImage().getWidth(), getHeight());

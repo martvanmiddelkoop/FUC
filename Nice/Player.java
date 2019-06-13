@@ -119,12 +119,13 @@ public class Player extends Dynamic
     
     private int health = 3;
     
+    public int getHealth()
+    {
+        return health;
+    }
+    
     public void damage(int hp)
     {
-        health--;
-        if(health <= 0)
-        {
-            ((Level)getWorld()).lose();
-        }
+            ((Level)getWorld()).damage();
     }
 }
