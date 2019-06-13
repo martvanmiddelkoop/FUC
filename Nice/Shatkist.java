@@ -22,6 +22,7 @@ public class Shatkist extends WorldObject
             if(((Level2)getWorld()).isKeyCollected())
             {
                 ((Level2)getWorld()).setPopup("Schatkist verzameld");
+                ((Level)getWorld()).addScore(200);
                 getWorld().removeObject(this);
             }
             else

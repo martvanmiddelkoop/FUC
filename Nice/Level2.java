@@ -39,6 +39,9 @@ public class Level2 extends Level
     {
         Finish f = new Finish();
         addObject(f, new SteenBlock().getImage().getWidth() * 64, getHeight() - new SteenBlock().getImage().getHeight());
+        
+         addObject(new Shatkist(), new SteenBlock().getImage().getWidth() * 62, getHeight() - new SteenBlock().getImage().getHeight());
+
         for(int i = -20; i < 65; i++)
         {
             SteenBlock block = new SteenBlock();

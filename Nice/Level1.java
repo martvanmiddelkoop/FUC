@@ -24,6 +24,7 @@ public class Level1 extends Level
      */
     public Level1()
     {
+        score = 100;
         Finish f = new Finish();
         addObject(f, new Block().getImage().getWidth() * 99, getHeight() - new Block().getImage().getHeight());
         

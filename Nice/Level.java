@@ -14,6 +14,7 @@ public abstract class Level extends World
     private static Text lives = new Text();
     private int health = 3;
     private Popup popup = new Popup();
+    protected static int score = 100;
     
     public Level()
     {    
@@ -26,6 +27,19 @@ public abstract class Level extends World
         lives.setText("HP: " + player.getHealth() + "");
         lives.setLocation(lives.getImage().getWidth(), 30);
         addObject(popup, 0,0);
+        Score s = new Score();
+        s.setText("Score: " + score);
+        addObject(s, getWidth() - s.getImage().getWidth() / 2, 10);
+    }
+    
+    public int getScore()
+    {
+        return score;
+    }
+    
+    public void addScore(int amount)
+    {
+        score += amount;
     }
     
     protected abstract Level clone();
@@ -72,6 +86,7 @@ public abstract class Level extends World
     
     public void lose()
     {
+        score -= 20;
         Greenfoot.setWorld(clone());
     }
     
