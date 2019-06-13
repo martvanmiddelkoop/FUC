@@ -8,17 +8,18 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Player extends Dynamic
 {
-    private int speed = 2; //movement speed  
-    private int vSpeed = 0; //vertical speed  
-    private int acceleration = 2; //gravity effect while falling  
-    private int jumpStrength = -8; 
+    private float vSpeed = 0; //vertical speed  
+    private float acceleration = 0.7f; //gravity effect while falling  
+    private float jumpStrength = -15; 
+    private boolean hasJumped = false;
     
     public void act()
     {
+                checkFall();
+
         checkKeyPress();
-        checkFall();
-        jump();
-        handleCollision();
+        
+        
     }
     
     public void checkKeyPress()
@@ -27,23 +28,23 @@ public class Player extends Dynamic
         Dynamic dyn = (Dynamic) world.getDynamic();
         if(Greenfoot.isKeyDown("left") && dyn.shouldScroll == false)
         {
-            move(-3);
+            move(-3 * 2);
         }
         else if(Greenfoot.isKeyDown("right") && dyn.shouldScroll == false)
         {
-            move(3);
+            move(3 * 2);
         }
         
-        if (Greenfoot.isKeyDown("space") && onPlatform())
+        if (Greenfoot.isKeyDown("space") && !hasJumped)
         {
+            hasJumped = true;
             jump();
+            fall();
+            
         }
+       
     }
-    
-    public void handleCollision()
-    {
- 
-    }
+  
     
     public void move(int amount)
     {
@@ -55,16 +56,13 @@ public class Player extends Dynamic
     
     public void jump()  
     {  
-        if (Greenfoot.isKeyDown("space"))  
-        {  
-            vSpeed = jumpStrength;  
-            fall();  
-        }  
+            
+            vSpeed = jumpStrength;   
     } 
     
     public void fall()  
     {  
-        setLocation(getX(), getY()+vSpeed);  
+        setLocation(getX(),  getY() + (int)vSpeed);  
         vSpeed = vSpeed + acceleration;  
     }  
 
@@ -73,7 +71,30 @@ public class Player extends Dynamic
        Actor block = getOneIntersectingObject(Block.class);
         if(block != null)
         {
-            setLocation(getX(), block.getY() - block.getImage().getHeight() / 2 - getImage().getHeight() / 2 + 1); 
+            if(getY() + getImage().getHeight() > block.getY())
+            {
+                //if bottom
+                if(getY() < block.getY() + block.getImage().getHeight() / 2)
+                {
+                    //setLocation(getX(), block.getY() + block.getImage().getHeight());
+                    vSpeed = 2;
+                }
+                if(getX() + getImage().getWidth() < block.getX() + 10)
+                {//if left
+                    setLocation(block.getX() - block.getImage().getWidth() / 2 - getImage().getWidth() / 2 - 2, getY());
+                }
+                if(getX() > block.getX() + 10)
+                {//if right
+                    setLocation(block.getX() + block.getImage().getWidth() / 2 + getImage().getWidth() / 2  + 2 , getY());
+                }
+                return false;
+
+            }
+            else
+            {
+                setLocation(getX(), block.getY() - block.getImage().getHeight() / 2 - getImage().getHeight() / 2 + 1);
+                hasJumped = false;
+            }
             return true;
         }
         return false;

@@ -1,5 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
+import java.util.*;
 /**
  * Write a description of class ScrollingWorld here.
  * 
@@ -8,8 +8,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Level extends World
 {
-    public Player player;
-    public Dynamic dyn;
+    private Player player;
+    private Dynamic dyn;
+    private int coinsCollected = 0;
     
     public Level()
     {    
@@ -19,10 +20,21 @@ public class Level extends World
         dyn = new Dynamic();
         addObject(dyn, 0, -10);
     }
+    
+    public Actor findActor(Actor find)
+{
+    ArrayList<Actor> actors= (ArrayList<Actor>)getObjects(Actor.class);
+ 
+    for (Actor a : actors)
+        if(a.equals(find))
+             return a;
+    return null;
+}
 
     public Player getPlayer()
     {
-        return player;
+         
+        return  findActor(player) != null ? player : null;
     }
     
     public Dynamic getDynamic()
