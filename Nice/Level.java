@@ -22,6 +22,7 @@ public abstract class Level extends World
     }
     
     protected abstract Level clone();
+    protected abstract Level getNext();
     
     public Actor findActor(Actor find)
 {
@@ -47,5 +48,10 @@ public abstract class Level extends World
     public void lose()
     {
         Greenfoot.setWorld(clone());
+    }
+    
+    public void finish()
+    {
+        Greenfoot.setWorld(getNext());
     }
 }

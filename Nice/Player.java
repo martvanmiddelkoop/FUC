@@ -19,6 +19,11 @@ public class Player extends Dynamic
 
         checkKeyPress();
         
+        if(getY() > getWorld().getHeight())
+        {
+            ((Level)getWorld()).lose();
+        }
+        
         
     }
     

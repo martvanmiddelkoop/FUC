@@ -14,6 +14,11 @@ public class Level3 extends Level
         return new Level3();
     }
     
+    protected Level getNext()
+    {
+        return null;
+    }
+    
     public Level3()
     {
         for(int i = 0; i < 50; i++)

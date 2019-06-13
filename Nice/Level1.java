@@ -13,7 +13,11 @@ public class Level1 extends Level
     {
         return new Level1();
     }
-
+    
+    protected Level getNext()
+    {
+        return null;
+    }
     /**
      * Constructor for objects of class Level1.
      * 
