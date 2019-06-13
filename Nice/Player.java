@@ -71,7 +71,7 @@ public class Player extends Dynamic
        Actor block = getOneIntersectingObject(Block.class);
         if(block != null)
         {
-            if(getY() + getImage().getHeight() > block.getY())
+            if(getY() + getImage().getHeight() > block.getY() + 10)
             {
                 //if bottom
                 if(getY() < block.getY() + block.getImage().getHeight() / 2)
@@ -110,5 +110,16 @@ public class Player extends Dynamic
         {  
             fall();  
         }  
+    }
+    
+    private int health = 3;
+    
+    public void damage(int hp)
+    {
+        health--;
+        if(health <= 0)
+        {
+            ((Level)getWorld()).lose();
+        }
     }
 }

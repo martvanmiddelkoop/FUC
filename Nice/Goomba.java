@@ -10,11 +10,11 @@ public class Goomba extends Enemy
 {
     public void touchPlayer(Player player)
     {
-        getWorld().removeObject(player);
+        player.damage(1);
     }
     
     int dist = 0;
-    int target = 100;
+    int target = 80;
     int dir = 1;
     public void walk()
     {

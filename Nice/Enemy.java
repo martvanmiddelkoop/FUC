@@ -11,6 +11,8 @@ public abstract class Enemy extends WorldObject
     
     public abstract void touchPlayer(Player player);
     public abstract void walk();
+    
+    private boolean isTouching = false;
     public final void act() 
     {
         transform();
@@ -18,7 +20,15 @@ public abstract class Enemy extends WorldObject
         Player player = (Player)getOneIntersectingObject(Player.class);
         if(player != null)
         {
-            touchPlayer(player);
+            if(!isTouching)
+            {
+                isTouching = true;
+                touchPlayer(player);
+            }
+        }
+        else
+        {
+            isTouching = false;
         }
 
     }   
