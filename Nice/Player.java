@@ -111,4 +111,15 @@ public class Player extends Dynamic
             fall();  
         }  
     }
+    
+    private int health = 3;
+    
+    public void damage(int hp)
+    {
+        health--;
+        if(health <= 0)
+        {
+            ((Level)getWorld()).lose();
+        }
+    }
 }

@@ -8,6 +8,11 @@
  */
 public class Level1 extends Level
 {
+    
+    protected Level clone()
+    {
+        return new Level1();
+    }
 
     /**
      * Constructor for objects of class Level1.
@@ -88,6 +93,20 @@ public class Level1 extends Level
                     addObject(new Block(), i * block.getImage().getWidth(), getHeight() - block.getImage().getHeight() * 2);
                     addObject(new Block(), i * block.getImage().getWidth(), getHeight() - block.getImage().getHeight() * 3);
 
+                    break;
+
+            }
+            
+            switch(i)
+            {
+                case 3:
+                case 10:
+                case 27:
+                case 75:
+                case 44:
+                case 68:
+                Goomba g = new Goomba();
+                    addObject(g, i * block.getImage().getWidth(), getHeight() - block.getImage().getHeight());
                     break;
 
             }
