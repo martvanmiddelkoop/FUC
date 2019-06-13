@@ -71,7 +71,7 @@ public class Player extends Dynamic
        Actor block = getOneIntersectingObject(Block.class);
         if(block != null)
         {
-            if(getY() + getImage().getHeight() > block.getY() + 10)
+            if(getY() + getImage().getHeight() / 2 > block.getY())
             {
                 //if bottom
                 if(getY() < block.getY() + block.getImage().getHeight() / 2)
