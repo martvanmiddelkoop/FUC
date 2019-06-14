@@ -14,7 +14,7 @@ public abstract class Level extends World
     private Dynamic dyn;
     private int coinsCollected = 0;
     private static Text lives = new Text();
-    protected static int health = 1;
+    protected static int health = 4;
     private Popup popup = new Popup();
     protected static int score = 100;
     
@@ -23,7 +23,7 @@ public abstract class Level extends World
         super(600, 400, 1, false);
         if(health <= 0)
         {
-            health = 1;
+            health = 3;
         }
         
         player = new Player();
@@ -99,7 +99,7 @@ public abstract class Level extends World
     public void lose()
     {
         score -= 20;
-        health = 1;
+        health = 3;
         Greenfoot.setWorld(new Level1());
     }
     

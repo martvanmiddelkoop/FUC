@@ -5,7 +5,7 @@ public class Garfield extends Enemy
 {
     public Garfield()
     {
-        health = 200;
+        health = 50;
     }
     
     public void touchPlayer(Player player)
@@ -13,7 +13,7 @@ public class Garfield extends Enemy
         player.damage(1);
         if(stop)
         {
-            setLocation(recX, getY());
+            setLocation(recX + getWorld().getWidth(), getY());
             stop = false;
             setRotation(0);
         }
@@ -44,7 +44,7 @@ public void checkKeys()
     {
         shoot();
     }
-    else if(Greenfoot.getRandomNumber(1000) < 1)
+    else if(Greenfoot.getRandomNumber(500) < 1)
     {
         stop = true;
         recX = getX();
