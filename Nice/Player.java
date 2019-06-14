@@ -18,6 +18,7 @@ public class Player extends Dynamic
                 checkFall();
 
         checkKeyPress();
+        getShotByGarfield();
         
         if(getY() > getWorld().getHeight())
         {
@@ -127,5 +128,13 @@ public class Player extends Dynamic
     public void damage(int hp)
     {
             ((Level)getWorld()).damage();
+    }
+    
+    public void getShotByGarfield()
+    {
+        if(isTouching(Bullet.class))
+        {
+            Greenfoot.setWorld(new Level3());
+        }
     }
 }

@@ -15,8 +15,15 @@ comment6.params=
 comment6.target=boolean\ onPlatform()
 comment7.params=
 comment7.target=void\ checkFall()
+<<<<<<< HEAD
 comment8.params=
 comment8.target=int\ getHealth()
 comment9.params=hp
 comment9.target=void\ damage(int)
+=======
+comment8.params=hp
+comment8.target=void\ damage(int)
+comment9.params=
+comment9.target=void\ getShotByGarfield()
+>>>>>>> 0c0c7862ab1083e79e9a7867839a666a2f85b27f
 numComments=10

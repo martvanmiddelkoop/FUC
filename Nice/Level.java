@@ -1,5 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.*;
+import java.io.*;
+import java.text.*;
 /**
  * Write a description of class ScrollingWorld here.
  * 
@@ -29,7 +31,7 @@ public abstract class Level extends World
         addObject(popup, 0,0);
         Score s = new Score();
         s.setText("Score: " + score);
-        addObject(s, getWidth() - s.getImage().getWidth() / 2, 10);
+        addObject(s, getWidth() - s.getImage().getWidth() / 2 - 20, 30);
     }
     
     public int getScore()
@@ -90,8 +92,37 @@ public abstract class Level extends World
         Greenfoot.setWorld(clone());
     }
     
+    public void win()
+    {
+        try(FileWriter fw = new FileWriter("score.txt", true);
+        BufferedWriter bw = new BufferedWriter(fw);
+        PrintWriter out = new PrintWriter(bw))
+        {
+            SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");  
+            Date date = new Date(System.currentTimeMillis());  
+            out.println("Score: " + score + " Datum: "+ formatter.format(date));
+        } 
+        catch (IOException e) 
+        {
+        }
+        
+        setPopup("Gewonnen! :)");
+        while(true)
+        {
+            Greenfoot.delay(1);
+        }
+    }
+    
     public void finish()
     {
-        Greenfoot.setWorld(getNext());
+        Level l = getNext();
+        if(l == null)
+        {
+            win();
+        }
+        else
+        {
+            Greenfoot.setWorld(getNext());
+        }
     }
 }
