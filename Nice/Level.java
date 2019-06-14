@@ -17,9 +17,11 @@ public abstract class Level extends World
     private int health = 3;
     private Popup popup = new Popup();
     protected static int score = 100;
+    static GreenfootSound  achtergrondMuziek = new GreenfootSound("Bitch Lasanga.mp3");
     
     public Level()
     {    
+        
         super(600, 400, 1, false);
         player = new Player();
         addObject(player, 300, 100); //Creates the player.
@@ -32,6 +34,13 @@ public abstract class Level extends World
         Score s = new Score();
         s.setText("Score: " + score);
         addObject(s, getWidth() - s.getImage().getWidth() / 2 - 20, 30);
+        
+        if(!achtergrondMuziek.isPlaying())
+        {
+            achtergrondMuziek.playLoop();
+        }
+        
+        
     }
     
     public int getScore()
