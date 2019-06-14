@@ -58,7 +58,10 @@ public class Level2 extends Level
                 
                 case 15:
                                     addObject(block, i * block.getImage().getWidth(), getHeight() - block.getImage().getHeight());
-                break;
+                                    Goomba a = new Goomba();
+                    addObject(a, i * block.getImage().getWidth(), getHeight() - block.getImage().getHeight()- 75);
+                    break;
+                
                 case 16:
                 case 17:
                 break;
@@ -67,12 +70,17 @@ public class Level2 extends Level
                                 addObject(block, i * block.getImage().getWidth(), getHeight() - block.getImage().getHeight() * 2);
                 case 19:  
                                 addObject(block, i * block.getImage().getWidth(), getHeight() - block.getImage().getHeight() * 2);
-                 break;  
+                                 
+                  
                  case 20:
                  case 21:
                  break;
                  case 22:
                                 addObject(block, i * block.getImage().getWidth(), getHeight() - block.getImage().getHeight() * 2);
+                                   Goomba b = new Goomba();
+                    addObject(b, i * block.getImage().getWidth(), getHeight() - block.getImage().getHeight()-175);
+                    break;
+                            
                  case 23:
                                 addObject(block, i * block.getImage().getWidth(), getHeight() - block.getImage().getHeight() * 2);
                  break;               
@@ -105,13 +113,21 @@ public class Level2 extends Level
                  break;         
                  case 38:
                             addObject(block, i * block.getImage().getWidth(), getHeight() - block.getImage().getHeight());
-                 break;
+                               Goomba c = new Goomba();
+                    addObject(c, i * block.getImage().getWidth(), getHeight() - block.getImage().getHeight()-75);
+                    break;
+                            
+                 
                  case 39:
                             addObject(block, i * block.getImage().getWidth(), getHeight() - block.getImage().getHeight());
                   break;
                   
                   case 40:
                             addObject(block, i * block.getImage().getWidth(), getHeight() - block.getImage().getHeight());
+                               Goomba h = new Goomba();
+                    addObject(h, i * block.getImage().getWidth(), getHeight() - block.getImage().getHeight()-75);
+                    
+                            
                   break;
                   case 41:
                   case 42:
@@ -121,6 +137,10 @@ public class Level2 extends Level
                   break;
                   case 47:
                             addObject(block, i * block.getImage().getWidth(), getHeight() - block.getImage().getHeight() * 2);
+                               Goomba e = new Goomba();
+                    addObject(e, i * block.getImage().getWidth(), getHeight() - block.getImage().getHeight()-175);
+                  
+                            
                   break;
                   case 48:
                   break;
@@ -129,6 +149,10 @@ public class Level2 extends Level
                   break;
                   case 53:
                             addObject(block, i * block.getImage().getWidth(), getHeight() - block.getImage().getHeight());
+                               Goomba d = new Goomba();
+                    addObject(d, i * block.getImage().getWidth(), getHeight() - block.getImage().getHeight()-75);
+                    
+                            
                   break;
                   case 54:
                             addObject(block, i * block.getImage().getWidth(), getHeight() - block.getImage().getHeight());
@@ -138,6 +162,10 @@ public class Level2 extends Level
                   case 56:
                   case 57:
                             addObject(block, i * block.getImage().getWidth(), getHeight() - block.getImage().getHeight() * 2);
+                               Goomba g = new Goomba();
+                    addObject(g, i * block.getImage().getWidth(), getHeight() - block.getImage().getHeight()-175);
+                    
+                            
                   break;
                   case -19:
                     Sleutel s = new Sleutel();
