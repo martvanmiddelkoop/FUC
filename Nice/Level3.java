@@ -8,8 +8,17 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Level3 extends Level
 {
+<<<<<<< HEAD
     protected Level clone(){return new Level3();}
 
+=======
+    
+    protected Level clone()
+    {
+        return new Level3();
+    }
+    
+>>>>>>> 8dfa26cf40f17631e95caa753e7bbb360f2700bb
     public Level3()
     {
         for(int i = 0; i < 50; i++)
