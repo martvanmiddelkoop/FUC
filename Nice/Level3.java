@@ -8,16 +8,14 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Level3 extends Level
 {
+    protected Level clone(){return new Level3();}
 
-    /**
-     * Constructor for objects of class Level3.
-     * 
-     */
     public Level3()
     {
         for(int i = 0; i < 50; i++)
         {
             Block block = new Block();
+            
 
             switch(i)
             {
@@ -39,6 +37,8 @@ public class Level3 extends Level
             
             
         }
+        
+        addObject(new Garfield(), 500, 300);
         
     }
 }
