@@ -9,8 +9,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public abstract class Enemy extends WorldObject
 {
     
+    
     public abstract void touchPlayer(Player player);
     public abstract void walk();
+    protected int health = 1;
     
     private boolean isTouching = false;
     public final void act() 
@@ -30,8 +32,23 @@ public abstract class Enemy extends WorldObject
         {
             isTouching = false;
         }
+        
+        if(health <= 0)
+        {
+            die();
+        }
 
-    }   
+    }
+    
+    public void damage()
+    {
+        health--;
+    }
+    
+    public void die()
+    {
+        getWorld().removeObject(this);
+    }
     
     public void move(int amount)
     {

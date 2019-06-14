@@ -18,7 +18,7 @@ public class Level3 extends Level
 
     public Level3()
     {
-        for(int i = 0; i < 50; i++)
+        for(int i = -50; i < 50; i++)
         {
             Block block = new Block();
             
@@ -44,7 +44,9 @@ public class Level3 extends Level
             
         }
         
-        addObject(new Garfield(), 500, 300);
+        Garfield g = new Garfield();
+        
+        addObject(g, 1000, getHeight() - g.getImage().getHeight() /2 - new Block().getImage().getHeight() / 2);
         
     }
 }

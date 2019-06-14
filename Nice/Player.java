@@ -12,20 +12,36 @@ public class Player extends Dynamic
     private float acceleration = 0.7f; //gravity effect while falling  
     private float jumpStrength = -15; 
     private boolean hasJumped = false;
+    private boolean isSpaceDown= false;
     
     public void act()
     {
                 checkFall();
 
-        checkKeyPress();
-        getShotByGarfield();
-        
+        checkKeyPress();        
         if(getY() > getWorld().getHeight())
         {
             ((Level)getWorld()).lose();
         }
         
         
+        if(Greenfoot.isKeyDown("space"))
+        {
+            if(!isSpaceDown)
+            {
+                shoot();
+                isSpaceDown = true;
+            }
+        }
+        else
+        {
+            isSpaceDown = false;
+        }
+    }
+    
+    public void shoot()
+    {
+        getWorld().addObject(new JonBullet(), getX(),getY());
     }
     
     public void checkKeyPress()
@@ -41,7 +57,7 @@ public class Player extends Dynamic
             move(3 * 2);
         }
         
-        if (Greenfoot.isKeyDown("space") && !hasJumped)
+        if (Greenfoot.isKeyDown("up") && !hasJumped)
         {
             hasJumped = true;
             jump();

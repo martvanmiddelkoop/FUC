@@ -3,12 +3,26 @@ import java.util.List;
 
 public class Garfield extends Enemy
 {
-    public void touchPlayer(Player player){}
-    public boolean stop = true;
-
+    public Garfield()
+    {
+        health = 200;
+    }
+    
+    public void touchPlayer(Player player)
+    {
+        player.damage(1);
+        if(stop)
+        {
+            setLocation(recX, getY());
+            stop = false;
+            setRotation(0);
+        }
+    }
+    private boolean stop = false;
+    private int recX = 0;
 
     public void walk()
-{
+    {
      checkKeys();
      if(stop == true)
      {
@@ -17,6 +31,12 @@ public class Garfield extends Enemy
      
      
 }
+
+     public void die()
+     {
+         getWorld().addObject(new Finish(), getX(), getY());
+         super.die();
+     }
 
 public void checkKeys()
 {
@@ -27,6 +47,7 @@ public void checkKeys()
     else if(Greenfoot.getRandomNumber(500) < 1)
     {
         stop = true;
+        recX = getX();
     }
     
 }
@@ -40,11 +61,11 @@ public void specialAttack ()
     {
 
     move(-4);
-    turn(Greenfoot.getRandomNumber(90));
+    turn(20);
     
     if(atWorldEdge())
     {
-        setLocation(500, 300);
+        setLocation(recX, getY());
         stop = false;
         setRotation(0);
     }
