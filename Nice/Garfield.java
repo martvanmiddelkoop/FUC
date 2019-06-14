@@ -73,11 +73,6 @@ public void specialAttack ()
 
 public boolean atWorldEdge()
 {
-if (getX() <= 5 || getX() >= getWorld() . getWidth() -5)
-        return true;
-    if (getY() <= 5 || getY() >= getWorld() . getHeight() -5) 
-        return true;
-    else
-        return false;
+    return getX() < 0;
 }
 }

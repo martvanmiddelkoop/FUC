@@ -70,7 +70,7 @@ public abstract class Level extends World
         
         if(health <= 0)
         {
-            Greenfoot.setWorld(clone());
+            Greenfoot.setWorld(new Level1());
         }
 
     }
@@ -89,7 +89,7 @@ public abstract class Level extends World
     public void lose()
     {
         score -= 20;
-        Greenfoot.setWorld(clone());
+        Greenfoot.setWorld(new Level1());
     }
     
     public void win()
