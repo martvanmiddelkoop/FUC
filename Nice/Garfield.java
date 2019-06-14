@@ -44,7 +44,7 @@ public void checkKeys()
     {
         shoot();
     }
-    else if(Greenfoot.getRandomNumber(500) < 1)
+    else if(Greenfoot.getRandomNumber(1000) < 1)
     {
         stop = true;
         recX = getX();

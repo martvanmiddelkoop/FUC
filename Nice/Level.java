@@ -14,24 +14,34 @@ public abstract class Level extends World
     private Dynamic dyn;
     private int coinsCollected = 0;
     private static Text lives = new Text();
-    private int health = 3;
+    protected static int health = 1;
     private Popup popup = new Popup();
     protected static int score = 100;
     
     public Level()
     {    
         super(600, 400, 1, false);
+        if(health <= 0)
+        {
+            health = 1;
+        }
+        
         player = new Player();
         addObject(player, 300, 100); //Creates the player.
         dyn = new Dynamic();
         addObject(dyn, 0, -10);
         addObject(lives, 0, 0);
-        lives.setText("HP: " + player.getHealth() + "");
+        lives.setText("HP: " + health + "");
         lives.setLocation(lives.getImage().getWidth(), 30);
         addObject(popup, 0,0);
         Score s = new Score();
         s.setText("Score: " + score);
         addObject(s, getWidth() - s.getImage().getWidth() / 2 - 20, 30);
+    }
+    
+    public void addHealth(int amount)
+    {
+        health+=amount;
     }
     
     public int getScore()
@@ -89,6 +99,7 @@ public abstract class Level extends World
     public void lose()
     {
         score -= 20;
+        health = 1;
         Greenfoot.setWorld(new Level1());
     }
     
