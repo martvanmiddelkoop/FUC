@@ -13,13 +13,21 @@ public class Level1 extends Level
     {
         return new Level1();
     }
-
+    
+    protected Level getNext()
+    {
+        return new Level2();
+    }
     /**
      * Constructor for objects of class Level1.
      * 
      */
     public Level1()
     {
+        score = 100;
+        Finish f = new Finish();
+        addObject(f, new Block().getImage().getWidth() * 99, getHeight() - new Block().getImage().getHeight());
+        
         for(int i = 0; i < 100; i++)
         {
             Block block = new Block();

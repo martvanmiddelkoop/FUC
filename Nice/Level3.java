@@ -8,20 +8,17 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Level3 extends Level
 {
-<<<<<<< HEAD
     protected Level clone(){return new Level3();}
 
-=======
     
-    protected Level clone()
+    protected Level getNext()
     {
-        return new Level3();
+        return null;
     }
-    
->>>>>>> 8dfa26cf40f17631e95caa753e7bbb360f2700bb
+
     public Level3()
     {
-        for(int i = 0; i < 50; i++)
+        for(int i = -50; i < 50; i++)
         {
             Block block = new Block();
             
@@ -47,7 +44,9 @@ public class Level3 extends Level
             
         }
         
-        addObject(new Garfield(), 500, 300);
+        Garfield g = new Garfield();
+        
+        addObject(g, 1000, getHeight() - g.getImage().getHeight() /2 - new Block().getImage().getHeight() / 2);
         
     }
 }

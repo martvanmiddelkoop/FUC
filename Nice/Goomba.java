@@ -8,6 +8,11 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Goomba extends Enemy
 {
+    public Goomba()
+    {
+        health = 5;
+    }
+    
     public void touchPlayer(Player player)
     {
         player.damage(1);
