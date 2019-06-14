@@ -126,7 +126,7 @@ public abstract class Level extends World
         {
         }
         
-        setPopup("Gewonnen! :)");
+        setPopup("[SLEUTEL VOOR DE ESCAPE ROOP]");
         while(true)
         {
             Greenfoot.delay(1);
